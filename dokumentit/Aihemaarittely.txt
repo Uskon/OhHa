@@ -1,0 +1,11 @@
+﻿Aihe: puzzlepelialusta
+Tarkoituksena on toteuttaa pohja, käyttöliittymä ja toiminnallisuus jotka mahdollistavat monia erilaisia klassisille point and click adventurepeleille tyypillisiä puzzleja. Toteutukseen sisältyy useita toimintoja näytöllä olevien graafisten objektien suhteen (kytkinten aktivointi, paikkojen vaihtaminen jne.). Lisäksi tallennustoiminnallisuus ja puzzlen sisällytettävyys olemassa olevaan yksinkertaiseen adventurepelipohjaan.
+
+Käyttäjät: pelaaja, point and click adventure
+
+Kaikkien käytettävissä olevat toiminnot:
+	-puzzlen valitseminen ja käynnistäminen
+	-tulosten tallentaminen ja tarkastelu
+
+Pelaajan toiminnot:
+	-graafisten objektien käyttäminen, puzzlesta riippuen siirtämistä, vaihtamista, aktivoimista jne.

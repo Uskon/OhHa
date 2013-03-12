@@ -1,0 +1,2 @@
+12.3
+ #klo 11-13, git setup ja dokumentoinnin aloittaminen
