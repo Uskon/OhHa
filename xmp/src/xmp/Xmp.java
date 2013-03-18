@@ -24,14 +24,7 @@ public class Xmp {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //UI ui = new UI();
-        //SwingUtilities.invokeLater(ui);
 
-        Trigger trigger = new Trigger();
-        TriggerSequence seq = new TriggerSequence();
-        
-        HashMap<Integer,Trigger> testList = new HashMap<>();
-        testList.put(2,trigger);
-        seq.newSequence(testList);
+        //Currently only used for testing. Actual functionality will be implemented on a later date.
     }
 }
