@@ -1,6 +1,8 @@
-﻿12.3
+﻿112.3
  #klo 11-13; git setup ja dokumentoinnin aloittaminen
  
-13.3
+113.3
  #klo 17-19; Objekti- ja kytkinpohjien luominen. Triggerien käynnistysjärjestys toimintakunnossa. Kahden objektin paikkojen vaihtaminen.
  
+ 18.3
+ #klo 13-14, 16-16.30; Testien kasaamista ja luokkien metodien tarkentamista.
