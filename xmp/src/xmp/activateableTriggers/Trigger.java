@@ -1,13 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package xmp.activateableTriggers;
 
-/**
- *
- * @author Uskon
- */
 public class Trigger {
     private boolean isActivated = false;
     

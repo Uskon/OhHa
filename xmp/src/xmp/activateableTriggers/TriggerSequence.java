@@ -1,32 +1,32 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package xmp.activateableTriggers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
- *
- * @author Uskon
- */
 public class TriggerSequence {
+
     private HashMap<Integer, Trigger> triggerList;
-    
+
     public TriggerSequence() {
-        triggerList = new HashMap<>();
+        triggerList = null;
     }
-    
-    public void newSequence(HashMap<Integer,Trigger> newList) {
+
+    public void newSequence(HashMap<Integer, Trigger> newList) {
+
+        for (int k = 1; k <= newList.size(); k++) {
+            if (!newList.containsKey(k)) {
+                throw new IllegalArgumentException("For n entries the key values must include every number from 1 to n");
+            }
+        }
         triggerList = newList;
     }
-    
+
     public void activateInCorrectOrder(Trigger trigger) {
         for (int k = 1; k <= triggerList.size(); k++) {
             if (triggerList.get(k).equals(trigger)) {
                 trigger.activateTrigger();
                 break;
-            }   else {
+            } else {
                 if (triggerList.get(k).checkStatus() == false) {
                     deactivateAllTriggers();
                     break;
@@ -35,15 +35,27 @@ public class TriggerSequence {
         }
     }
     
+    public boolean checkIfSequenceIsCompleted() {
+        for (int k = 1; k <= triggerList.size(); k++) {
+            if (triggerList.get(k).checkStatus() == false) {
+                return false;
+            }
+        }   return true;
+    }
+
     public void deactivateAllTriggers() {
         for (int k = 1; k <= triggerList.size(); k++) {
             triggerList.get(k).deactivateTrigger();
         }
     }
-    
+
     public void printStatus() {
         for (int k = 1; k <= triggerList.size(); k++) {
             System.out.println(triggerList.get(k).checkStatus());
         }
+    }
+
+    public HashMap<Integer, Trigger> getList() {
+        return this.triggerList;
     }
 }

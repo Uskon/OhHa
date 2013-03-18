@@ -1,14 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package xmp.clickables;
+package xmp.objects;
 
-/**
- *
- * @author Uskon
- */
+import xmp.activateableTriggers.Trigger;
+
 public class ActivateableObject extends ClickableObject{
+    private Trigger trigger;
     
     public ActivateableObject(int x, int y) {
         super(x, y);

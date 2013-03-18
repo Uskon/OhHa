@@ -8,7 +8,8 @@ import java.util.HashMap;
 import javax.swing.SwingUtilities;
 import xmp.activateableTriggers.Trigger;
 import xmp.activateableTriggers.TriggerSequence;
-import xmp.clickables.SwappableObject;
+import xmp.objects.MoveableObject;
+import xmp.objects.SwappableObject;
 import xmp.utilities.ObjectPlaceSwapper;
 
 
@@ -26,19 +27,11 @@ public class Xmp {
         //UI ui = new UI();
         //SwingUtilities.invokeLater(ui);
 
-        Trigger t1 = new Trigger();
-        Trigger t2 = new Trigger();
-        TriggerSequence ts = new TriggerSequence();
-        HashMap<Integer, Trigger> tlist = new HashMap<>();
-        tlist.put(1, t2);
-        tlist.put(2, t1);
-        ts.newSequence(tlist);
-        t1.activateTrigger();
-        ts.activateInCorrectOrder(t1);
-        ts.printStatus();
-        ts.activateInCorrectOrder(t2);
-        ts.activateInCorrectOrder(t1);
-        ts.printStatus();
+        Trigger trigger = new Trigger();
+        TriggerSequence seq = new TriggerSequence();
         
+        HashMap<Integer,Trigger> testList = new HashMap<>();
+        testList.put(2,trigger);
+        seq.newSequence(testList);
     }
 }
