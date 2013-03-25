@@ -2,8 +2,8 @@ package xmp.objects;
 
 public class MoveableObject extends ClickableObject {
 
-    public MoveableObject(int x, int y) {
-        super(x, y);
+    public MoveableObject(int x, int y, int w, int h) {
+        super(x, y, w, h);
     }
 
     public void moveObject(int x, int y) {

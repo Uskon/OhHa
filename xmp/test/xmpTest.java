@@ -37,9 +37,9 @@ public class xmpTest {
 
     @Before
     public void setUp() {
-        mo = new MoveableObject(0, 0);
-        so = new SwappableObject(0, 0);
-        ao = new ActivateableObject(0, 0);
+        mo = new MoveableObject(0, 0, 1, 1);
+        so = new SwappableObject(0, 0, 1, 1);
+        ao = new ActivateableObject(0, 0, 1, 1);
         trigger = new Trigger();
         trigger2 = new Trigger();
         testList = new HashMap<>();
@@ -66,6 +66,72 @@ public class xmpTest {
     }
 
     @Test
+    public void objectWidthGetterIsWorking() {
+        mo.setW(5);
+        assertTrue(mo.getW() == 5);
+    }
+
+    @Test
+    public void objectHeightGetterIsWorking() {
+        mo.setH(5);
+        assertTrue(mo.getH() == 5);
+    }
+
+    @Test
+    public void objectCoordinateXCannotBeSetNegative() {
+        try {
+            mo.setX(-5);
+        } catch (Exception e) {
+        }
+        assertTrue(mo.getX() == 0);
+    }
+
+    @Test
+    public void objectCoordinateYCannotBeSetNegative() {
+        try {
+            mo.setY(-5);
+        } catch (Exception e) {
+        }
+        assertTrue(mo.getY() == 0);
+    }
+
+    @Test
+    public void objectWidthCannotBeSetNegative() {
+        try {
+            mo.setW(-1);
+        } catch (Exception e) {
+        }
+        assertTrue(mo.getW() == 1);
+    }
+    
+    @Test
+    public void objectWidthCannotBeSetZero() {
+        try {
+            mo.setW(0);
+        } catch (Exception e) {
+        }
+        assertTrue(mo.getW() == 1);
+    }
+
+    @Test
+    public void objectHeightCannotBeSetNegative() {
+        try {
+            mo.setH(-1);
+        } catch (Exception e) {
+        }
+        assertTrue(mo.getH() == 1);
+    }
+    
+    @Test
+    public void objectHeightCannotBeSetZero() {
+        try {
+            mo.setH(0);
+        } catch (Exception e) {
+        }
+        assertTrue(mo.getH() == 1);
+    }
+    
+    @Test
     public void moveableObjectCanBeMoved() {
         mo.moveObject(2, 3);
         assertTrue(mo.getX() == 2 && mo.getY() == 3);
@@ -82,7 +148,7 @@ public class xmpTest {
 
     @Test
     public void objectsCanBeSwappedCorrectly() {
-        SwappableObject swaptest = new SwappableObject(10, 5);
+        SwappableObject swaptest = new SwappableObject(10, 5, 1, 1);
         ops.swapPlaces(so, swaptest);
         assertTrue((so.getX() == 10 && so.getY() == 5) && (swaptest.getX() == 0 && swaptest.getY() == 0));
     }
@@ -105,13 +171,13 @@ public class xmpTest {
         trigger2.activateTrigger();
         assertTrue(testSeq.checkIfSequenceIsCompleted());
     }
-    
+
     @Test
     public void checkIfSequenceIsCompletedReturnsCorrectValueWhenFalse() {
         trigger.activateTrigger();
         assertFalse(testSeq.checkIfSequenceIsCompleted());
     }
-    
+
     @Test
     public void triggerSequenceDeniesIncorrectSequencesWhenTryingToSetNewSequence() {
         testList.put(2, trigger);
@@ -135,7 +201,7 @@ public class xmpTest {
         assertTrue(trigger.checkStatus() == false && trigger2.checkStatus() == false);
 
     }
-    
+
     @Test
     public void triggersActivateWhenUsedInCorrectOrder() {
         testSeq.activateInCorrectOrder(trigger);
