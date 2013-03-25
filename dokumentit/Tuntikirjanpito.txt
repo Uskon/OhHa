@@ -6,3 +6,6 @@
  
 18.3
  #klo 13-14, 16-16.30; Testien kasaamista ja luokkien metodien tarkentamista.
+ 
+25.3
+ #klo 12.30-15; UI:n kasaamista, objektien klikkaamisen havaitseminen, pieniä lisäyksiä objektiluokkien metodeihin ja muuttujiin.
