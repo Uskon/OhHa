@@ -4,6 +4,7 @@
  */
 package xmp;
 
+import xmp.userInterface.UI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.SwingUtilities;
@@ -27,6 +28,7 @@ public class Xmp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //TEST CODE--
         MoveableObject o1 = new MoveableObject(50,50, 20, 20);
         SwappableObject s1 = new SwappableObject(10, 20, 10, 40);
         SwappableObject s2 = new SwappableObject(40, 160, 60, 20);
@@ -37,6 +39,7 @@ public class Xmp {
         UI ui = new UI();
         ui.getGraphicsPanel().setObjectList(list);
         SwingUtilities.invokeLater(ui);
+        //--TEST CODE
         // TODO code application logic here
 
         //Currently only used for testing. Actual functionality will be implemented on a later date.
