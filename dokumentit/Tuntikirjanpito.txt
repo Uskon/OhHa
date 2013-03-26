@@ -9,3 +9,7 @@
  
 25.3
  #klo 12.30-15; UI:n kasaamista, objektien klikkaamisen havaitseminen, pieniä lisäyksiä objektiluokkien metodeihin ja muuttujiin.
+ 
+26.3
+ #klo 12-13; Uusia testeja, testien jakaminen omiin paketteihinsa ja luokkiinsa.
+ #klo 16.30-

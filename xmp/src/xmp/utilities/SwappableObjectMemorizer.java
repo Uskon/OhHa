@@ -22,12 +22,11 @@ public class SwappableObjectMemorizer {
     public void manageSwappables(SwappableObject sw) {
         if (swappable1 == null) {
             swappable1 = sw;
-        } else if (swappable1 != null && swappable2 == null ) {
+        } else if (swappable1 == sw && swappable2 == null) {
+        }
+        else if (swappable1 != null && swappable1 != sw && swappable2 == null ) {
             swappable2 = sw;
             swapper.swapPlaces(swappable1, swappable2);
-            swappable1 = null;
-            swappable2 = null;
-        } else if (swappable1 != null && swappable1 == sw) {
             swappable1 = null;
             swappable2 = null;
         }
