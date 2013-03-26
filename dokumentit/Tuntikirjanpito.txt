@@ -12,4 +12,4 @@
  
 26.3
  #klo 12-13; Uusia testeja, testien jakaminen omiin paketteihinsa ja luokkiinsa.
- #klo 16.30-
+ #klo 16.30-17.30; Uuden nykyiseen koodin pohjautuvan luokkakaavion luominen, muutaman lisä ohjelmakoodin ja uudelleenjärjestelyä.
