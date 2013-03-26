@@ -34,9 +34,8 @@ public class Xmp {
         list.add(o1);
         list.add(s1);
         list.add(s2);
-        GraphicsPanel gpanel = new GraphicsPanel();
-        gpanel.setObjectList(list);
-        UI ui = new UI(gpanel);
+        UI ui = new UI();
+        ui.getGraphicsPanel().setObjectList(list);
         SwingUtilities.invokeLater(ui);
         // TODO code application logic here
 

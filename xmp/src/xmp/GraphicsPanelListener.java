@@ -4,13 +4,10 @@
  */
 package xmp;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import xmp.objects.ClickableObject;
 import xmp.objects.SwappableObject;
-import xmp.utilities.ObjectPlaceSwapper;
 import xmp.utilities.SwappableObjectMemorizer;
 
 /**
@@ -20,7 +17,6 @@ import xmp.utilities.SwappableObjectMemorizer;
 public class GraphicsPanelListener implements MouseListener {
 
     private GraphicsPanel gpanel;
-    private ObjectPlaceSwapper swapper = new ObjectPlaceSwapper();
     private SwappableObjectMemorizer smemo = new SwappableObjectMemorizer();
 
     public GraphicsPanelListener(GraphicsPanel gp) {

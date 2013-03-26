@@ -7,6 +7,7 @@ package objectsTest;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import xmp.activateableTriggers.Trigger;
 import xmp.objects.ActivateableObject;
 
 /**
@@ -16,6 +17,7 @@ import xmp.objects.ActivateableObject;
 public class ActivateableObjectTest {
 
     private ActivateableObject ao;
+    private Trigger t;
 
     public ActivateableObjectTest() {
     }
@@ -23,9 +25,22 @@ public class ActivateableObjectTest {
     @Before
     public void setUp() {
         ao = new ActivateableObject(0, 0, 1, 1);
+        t = new Trigger();
     }
 
     @Test
-    public void template() {
+    public void triggerCanBeActivatedIfSet() {
+        ao.setTrigger(t);
+        ao.triggerObject();
+        assertTrue(ao.getTrigger().checkStatus());
+    }
+    
+    @Test
+    public void nothingHappensIfTriggerIsNotSet() {
+        try {
+            ao.activateObject();
+        } catch (Exception e) {
+            fail("An error occurred while trying to activate the object");
+        }
     }
 }

@@ -19,10 +19,9 @@ import javax.swing.WindowConstants;
 public class UI implements Runnable {
 
     private JFrame frame;
-    private GraphicsPanel graphicsPanel;
+    private GraphicsPanel graphicsPanel = new GraphicsPanel();
 
-    public UI(GraphicsPanel gpanel) {
-        this.graphicsPanel = gpanel;
+    public UI() {
     }
 
     @Override
@@ -45,5 +44,13 @@ public class UI implements Runnable {
 
     public JFrame getFrame() {
         return frame;
+    }
+
+    public GraphicsPanel getGraphicsPanel() {
+        return graphicsPanel;
+    }
+
+    public void setGraphicsPanel(GraphicsPanel graphicsPanel) {
+        this.graphicsPanel = graphicsPanel;
     }
 }
