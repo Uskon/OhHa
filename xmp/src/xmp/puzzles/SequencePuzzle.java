@@ -44,4 +44,9 @@ public class SequencePuzzle extends Puzzle{
             super.isCleared = true;
         }
     }
+    
+    @Override
+    public void reset() {
+        this.tseq.deactivateAllTriggers();
+    }
 }

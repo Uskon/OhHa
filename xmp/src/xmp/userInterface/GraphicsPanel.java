@@ -20,6 +20,7 @@ public class GraphicsPanel extends JPanel{
      * @see xmp.puzzles.Puzzle
      */
     private Puzzle p;
+    private UIContents uic;
     
     public GraphicsPanel() {
         super.setBackground(Color.WHITE);
@@ -54,5 +55,13 @@ public class GraphicsPanel extends JPanel{
         for (ClickableObject object : p.getObjectList()) {
             object.drawTestGraphics(graphics);
         }
+    }
+    
+    public void setUIC(UIContents uic) {
+        this.uic = uic;
+    }
+    
+    public UIContents getUIC() {
+        return this.uic;
     }
 }

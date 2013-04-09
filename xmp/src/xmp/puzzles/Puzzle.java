@@ -65,4 +65,6 @@ public abstract class Puzzle {
         return this.name;
     }
     
+    public void reset() {
+    }
 }

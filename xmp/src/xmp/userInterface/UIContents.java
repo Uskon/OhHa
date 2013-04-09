@@ -42,6 +42,9 @@ public class UIContents {
      * UI:lta saadut puzzlet.
      */
     private ArrayList<Puzzle> puzzleList;
+    private JPanel menubar = new JPanel();
+    private JPanel infobar = new JPanel();
+    private JLabel statustext = new JLabel();
     
     public UIContents(UI ui) {
         this.ui = ui;
@@ -100,13 +103,23 @@ public class UIContents {
      * Luo puzzlenratkaisunäkymän.
      */
     public void puzzleScreen() {
+        for (Puzzle x : puzzleList) {
+            x.reset();
+        }
         p.removeAll();
         p.setLayout(new BorderLayout());
         p.add(ui.getGraphicsPanel());
-        JPanel menubar = new JPanel();
-        JPanel infobar = new JPanel();
+        JButton selection = new JButton("Back to selection");
+        selection.addActionListener(new SelectionButtonListener(this));
+        statustext.setPreferredSize(new Dimension(200,200));
+        infobar.add(statustext);
+        menubar.add(selection);
         p.add(menubar, BorderLayout.SOUTH);
         p.add(infobar, BorderLayout.EAST);
         ui.getFrame().addMouseListener(new GraphicsPanelListener(ui.getGraphicsPanel()));
+    }
+    
+    public JLabel getStatustext() {
+        return this.statustext;
     }
 }

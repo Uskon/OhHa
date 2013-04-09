@@ -60,6 +60,7 @@ public class UI implements Runnable {
      */
     private void createComponents(Container container) {
         uic = new UIContents(this);
+        this.graphicsPanel.setUIC(uic);
         uic.startMenu();
     }
     

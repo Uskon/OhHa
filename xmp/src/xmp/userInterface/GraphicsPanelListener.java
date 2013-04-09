@@ -109,7 +109,8 @@ public class GraphicsPanelListener implements MouseListener {
     public void checkPuzzleClearStatus() {
         gpanel.getPuzzle().clearCheck();
         if (gpanel.getPuzzle().isIsCleared()) {
-            System.out.println("Test complete");
+            this.gpanel.getUIC().getStatustext().setText("Puzzle cleared (Test version)");
+            this.gpanel.getUIC().refresh();
         }
     }
 
