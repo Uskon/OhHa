@@ -3,6 +3,9 @@ package xmp.objects;
 import java.awt.Color;
 import java.awt.Graphics;
 
+/**
+ * Kaikkien puzzlemekaanisesti oleellisten graafisten elementtien abstrakti yläluokka.
+ */
 public abstract class ClickableObject {
 
     int coordinateX;
@@ -10,6 +13,13 @@ public abstract class ClickableObject {
     int width;
     int height;
 
+    /**
+     * Luo olion, jos annetut parametrit ovat oikeanlaiset.
+     * @param x x-koordinaatti
+     * @param y y-koordinaatti
+     * @param w objektin leveys
+     * @param h objektin korkeus
+     */
     public ClickableObject(int x, int y, int w, int h) {
         if (x >= 0 && y >= 0) {
             this.coordinateX = x;
@@ -66,6 +76,10 @@ public abstract class ClickableObject {
         return this.height;
     }
     
+    /**
+     * Kaikki objektit voivat piirtää itselleen jonkinlaisen testigrafiikan.
+     * @param graphics 
+     */
     public void drawTestGraphics(Graphics graphics) {
         graphics.fillOval(coordinateX, coordinateY, width, height);
     }

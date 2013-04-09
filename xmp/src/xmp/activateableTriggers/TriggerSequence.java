@@ -3,14 +3,24 @@ package xmp.activateableTriggers;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Hallitsee triggereitten oikeaa aktivointia.
+ */
 public class TriggerSequence {
-
+    
+    /**
+     * Lista triggereistä ja niiden oikeasta järjestyksestä.
+     */
     private HashMap<Integer, Trigger> triggerList;
 
     public TriggerSequence() {
         triggerList = null;
     }
 
+    /**
+     * Asettaa uuden listan triggereistä, jos se on oikeaa muotoa.
+     * @param newList Uusi triggerjärjestys
+     */
     public void newSequence(HashMap<Integer, Trigger> newList) {
 
         for (int k = 1; k <= newList.size(); k++) {
@@ -19,12 +29,22 @@ public class TriggerSequence {
             }
         }
         triggerList = newList;
+        for (int k = 1; k <= triggerList.size(); k++) {
+            triggerList.get(k).setTSeq(this);
+        }
     }
 
+    /**
+     * Aktivoi triggerin jos sitä järjestyksessä edeltävät triggerit on aktivoitu, muulloin resettaa kaikkien sisältämiensä triggereitten tilan alkuperäiseen false-arvoon.
+     * 
+     * @see xmp.activateableTriggers.Trigger#forceActivate()
+     * 
+     * @param trigger Trigger, jota yritetään aktivoida.
+     */
     public void activateInCorrectOrder(Trigger trigger) {
         for (int k = 1; k <= triggerList.size(); k++) {
             if (triggerList.get(k).equals(trigger)) {
-                trigger.activateTrigger();
+                trigger.forceActivate();
                 break;
             } else {
                 if (triggerList.get(k).checkStatus() == false) {
@@ -35,6 +55,10 @@ public class TriggerSequence {
         }
     }
     
+    /**
+     * Tarkistaa onko kaikki Triggerit aktivoitu.
+     * @return TriggerSequencen tila
+     */
     public boolean checkIfSequenceIsCompleted() {
         for (int k = 1; k <= triggerList.size(); k++) {
             if (triggerList.get(k).checkStatus() == false) {
@@ -43,15 +67,12 @@ public class TriggerSequence {
         }   return true;
     }
 
+    /**
+     * Resettaa kaikkien sisältyvien triggereitten tilan.
+     */
     public void deactivateAllTriggers() {
         for (int k = 1; k <= triggerList.size(); k++) {
             triggerList.get(k).deactivateTrigger();
-        }
-    }
-
-    public void printStatus() {
-        for (int k = 1; k <= triggerList.size(); k++) {
-            System.out.println(triggerList.get(k).checkStatus());
         }
     }
 

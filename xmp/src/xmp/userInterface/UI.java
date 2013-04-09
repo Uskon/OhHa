@@ -11,17 +11,34 @@ package xmp.userInterface;
 
 import java.awt.Container;
 import java.awt.Dimension;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
+import xmp.puzzles.Puzzle;
 
+/**
+ * Käyttöliittymän määrittelevä luokka.
+ */
 public class UI implements Runnable {
-
+    /**
+     * Käytettävissä olevat puzzlet.
+     */
+    private ArrayList<Puzzle> pl;
+    /**
+     * UIContents joka määrittelee käyttöliittymän sisältöä.
+     */
+    private UIContents uic;
+    /**
+     * Käyttöliittymän JFrame.
+     */
     private JFrame frame;
+    /**
+     * Käytettävissä oleva GraphicsPanel.
+     */
     private GraphicsPanel graphicsPanel = new GraphicsPanel();
 
-    public UI() {
+    public UI(ArrayList<Puzzle> pl) {
+        this.pl = pl;
     }
 
     @Override
@@ -37,10 +54,18 @@ public class UI implements Runnable {
         frame.setVisible(true);
     }
 
+    /**
+     * Asettaa UIContentsin ja luo käynnistysvalikon.
+     * @param container 
+     */
     private void createComponents(Container container) {
-        container.add(graphicsPanel);
-        frame.addMouseListener(new GraphicsPanelListener(graphicsPanel));
+        uic = new UIContents(this);
+        uic.startMenu();
     }
+    
+    public void setUIC(UIContents uic) {
+        this.uic = uic;
+    } 
 
     public JFrame getFrame() {
         return frame;
@@ -52,5 +77,13 @@ public class UI implements Runnable {
 
     public void setGraphicsPanel(GraphicsPanel graphicsPanel) {
         this.graphicsPanel = graphicsPanel;
+    }
+    
+    public UIContents getUIContents() {
+        return this.uic;
+    }
+    
+    public ArrayList<Puzzle> getPuzzles() {
+        return this.pl;
     }
 }

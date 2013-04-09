@@ -7,18 +7,25 @@ package xmp.utilities;
 import xmp.objects.SwappableObject;
 
 /**
- *
- * @author Uskon
+ * Työkalu SwappableObjectien oikeanlaiseen paikkojenvaihtamiseen.
+ * 
  */
 public class SwappableObjectMemorizer {
-
     private SwappableObject swappable1 = null;
     private SwappableObject swappable2 = null;
+    /**
+     * ObjectPlaceSwapper joka hoitaa varsinaisen työn.
+     * @see xmp.utilities.ObjectPlaceSwapper
+     */
     private ObjectPlaceSwapper swapper = new ObjectPlaceSwapper();
 
     public SwappableObjectMemorizer() {
     }
 
+    /**
+     * Asettaa private-muuttujiin annetun SwappableObjectin oikein ehdoin ja suorittaa paikkojenvaihdon kun molemmat on asetettu, samaa SwappableObjectia ei voi asettaa molempiin muuttujiin.
+     * @param sw Muuttujaksia asetettava SwappableObject
+     */
     public void manageSwappables(SwappableObject sw) {
         if (swappable1 == null) {
             swappable1 = sw;

@@ -4,18 +4,15 @@
  */
 package xmp;
 
-import xmp.userInterface.UI;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.SwingUtilities;
-import xmp.activateableTriggers.Trigger;
-import xmp.activateableTriggers.TriggerSequence;
-import xmp.objects.ActivateableObject;
 import xmp.objects.ClickableObject;
 import xmp.objects.MoveableObject;
+import xmp.objects.SampleObjects;
 import xmp.objects.SwappableObject;
-import xmp.utilities.ObjectPlaceSwapper;
-import xmp.utilities.SwappableObjectMemorizer;
+import xmp.puzzles.Puzzle;
+import xmp.puzzles.SequencePuzzle;
+import xmp.userInterface.UI;
 
 
 /**
@@ -32,12 +29,17 @@ public class Xmp {
         MoveableObject o1 = new MoveableObject(50,50, 20, 20);
         SwappableObject s1 = new SwappableObject(10, 20, 10, 40);
         SwappableObject s2 = new SwappableObject(40, 160, 60, 20);
-        ArrayList<ClickableObject> list = new ArrayList<>();
+        /*ArrayList<ClickableObject> list = new ArrayList<>();
         list.add(o1);
         list.add(s1);
-        list.add(s2);
-        UI ui = new UI();
-        ui.getGraphicsPanel().setObjectList(list);
+        list.add(s2);*/
+        SampleObjects so = new SampleObjects();
+        ArrayList<Puzzle> pl = new ArrayList<>();
+        SequencePuzzle p = new SequencePuzzle("TestPuzzle");
+        p.setTseq(so.getTSeq());
+        p.setObjectList(so.getList());
+        pl.add(p);
+        UI ui = new UI(pl);
         SwingUtilities.invokeLater(ui);
         //--TEST CODE
         // TODO code application logic here

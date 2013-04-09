@@ -2,8 +2,18 @@ package xmp.utilities;
 
 import xmp.objects.SwappableObject;
 
+/**
+ * Työkalu SwappableObjectien paikkojen vaihtamiseen.
+ * @see xmp.objects.SwappableObject
+ *
+ */
 public class ObjectPlaceSwapper {
 
+    /**
+     * Vaihtaa parametrina annettuiden SwappableObjectien koordinaatit keskenään.
+     * @param swo
+     * @param swo2
+     */
     public void swapPlaces(SwappableObject swo, SwappableObject swo2) {
         int swoCoordinateX = swo.getX();
         int swoCoordinateY = swo.getY();

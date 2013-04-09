@@ -9,30 +9,49 @@ import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 import xmp.objects.ClickableObject;
+import xmp.puzzles.Puzzle;
 
 /**
- *
- * @author Uskon
+ * JPanelin alaluokka, joka on vastuussa ClickableObjectien graafisesta esittämisestä.
  */
 public class GraphicsPanel extends JPanel{
-    private ArrayList<ClickableObject> objectList;
+    /**
+     * Puzzle, minkä objektit halutaan piirtää.
+     * @see xmp.puzzles.Puzzle
+     */
+    private Puzzle p;
     
     public GraphicsPanel() {
         super.setBackground(Color.WHITE);
     }
     
-    public ArrayList<ClickableObject> getObjectList() {
-        return this.objectList;
+/*    public ArrayList<ClickableObject> getObjectList() {
+        return this.p.getObjectList();
     }
     
     public void setObjectList(ArrayList<ClickableObject> list) {
-        this.objectList = list;
+        this.p.setObjectList(list);
+    }
+    */
+    
+    public void setPuzzle(Puzzle p) {
+        this.p = p;
     }
     
+    public Puzzle getPuzzle() {
+        return this.p;
+    }
+    
+    
+    /**
+     * Piirtää kaikki puzzleen kuuluvat ClickableObjectit, tällä hetkellä testigrafiikoilla.
+     * @see xmp.objects.ClickableObject
+     * @param graphics 
+     */
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        for (ClickableObject object : objectList) {
+        for (ClickableObject object : p.getObjectList()) {
             object.drawTestGraphics(graphics);
         }
     }
