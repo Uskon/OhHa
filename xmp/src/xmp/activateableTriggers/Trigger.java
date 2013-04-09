@@ -11,13 +11,17 @@ public class Trigger {
     /**
      * Sekvenssi johon triggeri kuuluu.
      */
-    private TriggerSequence tseq;
+    private TriggerSequence tseq = null;
     
     /**
      * Yrittää aktivoida triggerin siinä sekvenssissä mihin se on laitettu.
      */
     public void activateTrigger() {
+        if (tseq != null) {
         tseq.activateInCorrectOrder(this);
+        } else {
+            forceActivate();
+        }
     }
     
     /**

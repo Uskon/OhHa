@@ -26,8 +26,14 @@ public class TriggerTest {
     }
     
     @Test
-    public void triggerCanBeActivated() {
+    public void triggerCanBeActivatedIfNotInATriggerSequence() {
         trigger.activateTrigger();
+        assertTrue(trigger.checkStatus());
+    }
+    
+    @Test
+    public void triggerCanBeForceActivated() {
+        trigger.forceActivate();
         assertTrue(trigger.checkStatus());
     }
 

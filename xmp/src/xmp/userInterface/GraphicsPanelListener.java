@@ -42,7 +42,7 @@ public class GraphicsPanelListener implements MouseListener {
 
     /**
      * Määrittää hiiren suhteellisen x-koordinaatin framen sisällä, parempi
-     * metodi tulossa Tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
+     * metodi tulossa, tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
      * eri kokoisilla ikkunoilla!.
      *
      * @param e
@@ -54,8 +54,9 @@ public class GraphicsPanelListener implements MouseListener {
 
     /**
      * Määrittää hiiren suhteellisen y-koordinaatin framen sisällä, parempi
-     * metodi tulossa Tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
-     * eri kokoisilla ikkunoilla!.
+     * metodi tulossa,
+     * tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
+     * eri kokoisilla ikkunoilla!
      *
      * @param e
      * @return Hiiren suhteellinen y-koordinaatti
