@@ -24,4 +24,4 @@
  #klo 12:30-13:30; Javadocin kirjoittaminen.
 
 10.4
- #klo 15:30-
+ #klo 15:30-17; Kaavioiden luonti ja päivitys

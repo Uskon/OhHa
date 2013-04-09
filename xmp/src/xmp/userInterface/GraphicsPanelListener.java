@@ -73,7 +73,6 @@ public class GraphicsPanelListener implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         for (ClickableObject object : gpanel.getPuzzle().getObjectList()) {
             if ((mouseX(e) >= object.getX() && mouseX(e) <= object.getX() + object.getW()) && (mouseY(e) >= object.getY() && mouseY(e) <= object.getY() + object.getH())) {
-                System.out.println(e.getX() + " " + e.getY());
                 if (object.getClass().getName().equals("xmp.objects.SwappableObject")) {
                     manageSwappables((SwappableObject) object);
                 }
