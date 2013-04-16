@@ -24,7 +24,6 @@ public abstract class Puzzle {
      * @see xmp.objects.ClickableObject
      */
     private ArrayList<ClickableObject> objectList;
-    private ArrayList<ClickableObject> originalState = new ArrayList<>();
     
     public Puzzle(String name) {
         this.name = name;
@@ -53,10 +52,6 @@ public abstract class Puzzle {
     public void setObjectList(ArrayList<ClickableObject> objectList) {
         this.objectList = objectList;
         
-    }
-    
-    public ArrayList<ClickableObject> getOriginalState() {
-        return this.originalState;
     }
     
     /**

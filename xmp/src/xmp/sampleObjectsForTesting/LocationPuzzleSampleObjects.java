@@ -2,24 +2,26 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package xmp.objects;
+package xmp.sampleObjectsForTesting;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import xmp.objects.ClickableObject;
+import xmp.objects.SwappableObject;
 import xmp.utilities.Location;
 
 /**
  *
  * @author Uskon
  */
-public class SampleObjects2 {
+public class LocationPuzzleSampleObjects {
     
     private ArrayList<ClickableObject> list;
     private HashMap<ClickableObject, Location> hm = new HashMap<>();
 
     
-    public SampleObjects2() {
+    public LocationPuzzleSampleObjects() {
         list = new ArrayList<>();
         File img = new File("images/redbutton.png");
         File alt = new File("images/greenbutton.png");

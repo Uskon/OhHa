@@ -27,4 +27,4 @@
  #klo 15:30-17; Kaavioiden luonti ja päivitys
  
 16.4
- #klo 13-; Uusia puzzletyyppeja sekä niiden vaatimat uudet sekä muuttuneet muut luokat. Kuvien piirtäminen objekteille.
+ #klo 13-18:30; Uusia puzzletyyppeja sekä niiden vaatimat uudet sekä muuttuneet muut luokat. Kuvien piirtäminen objekteille. Uusi sekvenssikaavio, luokkakaavion päivitys.

@@ -4,10 +4,12 @@
  */
 package objectsTest;
 
+import java.awt.Image;
+import java.io.File;
+import javax.imageio.ImageIO;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import xmp.objects.ActivateableObject;
 import xmp.objects.ClickableObject;
 import xmp.objects.MoveableObject;
 
@@ -18,6 +20,8 @@ import xmp.objects.MoveableObject;
 public class ClickableObjectTest {
 
     private ClickableObject co;
+    private File imagefile = new File("/images/redbutton.png");
+    private Image img;
 
     public ClickableObjectTest() {
     }
@@ -25,6 +29,21 @@ public class ClickableObjectTest {
     @Before
     public void setUp() {
         co = new MoveableObject(0, 0, 1, 1);
+        try {
+            img = ImageIO.read(imagefile);
+        } catch (Exception e) {
+        }
+
+    }
+
+    @Test
+    public void imageCanBeCreatedAndSet() {
+        co.setImage(imagefile);
+        if (img != null) {
+            assertTrue(co.getImage() == img);
+        } else {
+            fail("Incorrect filepath");
+        }
     }
 
     @Test

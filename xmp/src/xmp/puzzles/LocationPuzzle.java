@@ -10,8 +10,11 @@ import xmp.objects.ClickableObject;
 import xmp.utilities.Location;
 
 /**
- * Puzzleluokka, jonka suorittaminen perustuu objektien saamiseen oikeisiin sijainteihin.
- * 
+ * Puzzleluokka, jonka suorittaminen perustuu SwappableObjectien tai MoveableObjectien saamiseen oikeisiin sijainteihin.
+ * @see xmp.puzzles.Puzzle
+ * @see xmp.objects.SwappableObject
+ * @see xmp.objects.MoveableObject
+ * @see xmp.utilities.Location
  */
 public class LocationPuzzle extends Puzzle{
     /**
@@ -44,6 +47,10 @@ public class LocationPuzzle extends Puzzle{
         for (ClickableObject o : oLoc) {
             this.originalLocations.put(o, o.getLocation());
         }
+    }
+    
+    public HashMap<ClickableObject, Location> getOriginalLocations() {
+        return this.originalLocations;
     }
     
     /**

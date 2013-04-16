@@ -5,8 +5,8 @@
 package xmp.objects;
 
 /**
- *
- * @author Uskon
+ * ClickableObject johon on liitettynä yksi StaticObject, kykenee vaihtamaan StaticObjectin imagen seuraavaksi tai aiemmaksi.
+ * @see xmp.objects.StaticObject
  */
 public class StaticLinkedObject extends ClickableObject{
     private StaticObject linkedTo = null;

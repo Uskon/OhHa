@@ -113,6 +113,10 @@ public abstract class ClickableObject implements Cloneable{
             System.out.println("File not found!");
         }
     }
+    
+    public Image getImage() {
+        return this.image;
+    }
 
     /**
      * Kaikki objektit voivat piirtää itselleen jonkinlaisen testigrafiikan.

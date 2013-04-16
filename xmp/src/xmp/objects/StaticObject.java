@@ -45,8 +45,10 @@ public class StaticObject extends ClickableObject {
         super.image = images.get(currentImage);
     }
     
-    
     public void addImage(Image img) {
+        if (super.image == null) {
+            super.image = img;
+        }
         images.add(img);
     }
 
@@ -58,4 +60,7 @@ public class StaticObject extends ClickableObject {
         this.images = images;
     }
     
+    public int getState() {
+        return this.currentImage;
+    }
 }

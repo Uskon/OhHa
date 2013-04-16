@@ -29,7 +29,7 @@ public class ObjectPlaceSwapper {
     }
     
     /**
-     * Vaihtaa parametrina annettuiden SwappableObjectien koordinaatit keskenään. Uusi Locationeja käyttävä metodi.
+     * Vaihtaa parametrina annettuiden SwappableObjectien koordinaatit keskenään. Uusi Locationeja käyttävä metodi
      * 
      * @param swo
      * @param swo2 

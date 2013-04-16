@@ -10,7 +10,8 @@ import xmp.objects.ClickableObject;
 
 /**
  * Puzzleluokka, minkä ilmentymien ratkaiseminen perustuu ActivateableObjectien käyttämiseen oikeassa järjestyksessä.
- * 
+ * @see xmp.puzzles.Puzzle
+ * @see xmp.objects.ActivateableObject
  */
 public class SequencePuzzle extends Puzzle{
     /**

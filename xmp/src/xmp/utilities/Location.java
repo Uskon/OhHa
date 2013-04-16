@@ -44,7 +44,7 @@ public class Location {
             return false;
         }   else {
             Location l2 = (Location) object;
-            if (this.coordinateX == l2.getCoordinateY() && this.coordinateY == l2.getCoordinateY()) {
+            if (this.coordinateX == l2.getCoordinateX() && this.coordinateY == l2.getCoordinateY()) {
                 return true;
             }   else {
                 return false;

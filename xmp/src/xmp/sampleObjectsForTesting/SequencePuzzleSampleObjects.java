@@ -2,23 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package xmp.objects;
+package xmp.sampleObjectsForTesting;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import xmp.activateableTriggers.Trigger;
 import xmp.activateableTriggers.TriggerSequence;
+import xmp.objects.ActivateableObject;
+import xmp.objects.ClickableObject;
 
 /**
  * Väliaikainen luokka ActivateableObjekteja käyttävän SequencePuzzlen testausta varten.
  * @author Uskon
  */
-public class SampleObjects {
+public class SequencePuzzleSampleObjects {
     private ArrayList<ClickableObject> list;
     private TriggerSequence tseq;
     
-    public SampleObjects() {
+    public SequencePuzzleSampleObjects() {
         list = new ArrayList<>();
         File img = new File("images/redbutton.png");
         File alt = new File("images/greenbutton.png");
