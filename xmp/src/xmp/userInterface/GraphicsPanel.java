@@ -6,7 +6,9 @@ package xmp.userInterface;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import xmp.objects.ClickableObject;
 import xmp.puzzles.Puzzle;
@@ -53,7 +55,7 @@ public class GraphicsPanel extends JPanel{
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         for (ClickableObject object : p.getObjectList()) {
-            object.drawTestGraphics(graphics);
+            object.drawImage(graphics);
         }
     }
     

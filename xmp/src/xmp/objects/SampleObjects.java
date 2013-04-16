@@ -4,6 +4,7 @@
  */
 package xmp.objects;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import xmp.activateableTriggers.Trigger;
@@ -19,10 +20,20 @@ public class SampleObjects {
     
     public SampleObjects() {
         list = new ArrayList<>();
+        File img = new File("images/redbutton.png");
+        File alt = new File("images/greenbutton.png");
         ActivateableObject o1 = new ActivateableObject(10,10,70,70);
         ActivateableObject o2 = new ActivateableObject(400,400,70,70);
         ActivateableObject o3 = new ActivateableObject(10,400,70,70);
         ActivateableObject o4 = new ActivateableObject(400,10,70,70);
+        o1.setImage(img);
+        o1.setAltImage(alt);
+        o2.setImage(img);
+        o2.setAltImage(alt);
+        o3.setImage(img);
+        o3.setAltImage(alt);
+        o4.setImage(img);
+        o4.setAltImage(alt);
         Trigger t1 = new Trigger();
         Trigger t2 = new Trigger();
         Trigger t3 = new Trigger();

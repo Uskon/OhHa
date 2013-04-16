@@ -57,6 +57,7 @@ public class UIContents {
      * Luo käynnistysvalikon.
      */
     public void startMenu() {
+        resetPanels();
         p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
         p.setBackground(Color.black);
         JButton selection = new JButton("Select puzzle");
@@ -82,7 +83,7 @@ public class UIContents {
      * Luo puzzlenvalintanäkymän.
      */
     public void puzzleSelection() {
-        p.removeAll();
+        resetPanels();
         p.setLayout(new FlowLayout());
         if (this.puzzleList != null) {
         for (Puzzle z : this.puzzleList) {
@@ -106,7 +107,7 @@ public class UIContents {
         for (Puzzle x : puzzleList) {
             x.reset();
         }
-        p.removeAll();
+        resetPanels();
         p.setLayout(new BorderLayout());
         p.add(ui.getGraphicsPanel());
         JButton selection = new JButton("Back to selection");
@@ -121,5 +122,12 @@ public class UIContents {
     
     public JLabel getStatustext() {
         return this.statustext;
+    }
+    
+    public void resetPanels() {
+        p.removeAll();
+        infobar.removeAll();
+        menubar.removeAll();
+        statustext.setText("");
     }
 }
