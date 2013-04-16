@@ -23,7 +23,7 @@ import xmp.utilities.SwappableObjectMemorizer;
 
 /**
  * Vastuussa käyttöliittymän sisällön muuttamisesta.
- * @author Uskon
+ *
  */
 public class UIContents {
     /**
@@ -42,8 +42,17 @@ public class UIContents {
      * UI:lta saadut puzzlet.
      */
     private ArrayList<Puzzle> puzzleList;
+    /**
+     * Eri näkymiin kuuluva alalaidan valikkopalkki.
+     */
     private JPanel menubar = new JPanel();
+    /**
+     * Eri näkymiin kuuluva oikean laidan infopalkki.
+     */
     private JPanel infobar = new JPanel();
+    /**
+     * Puzzlenäkymässä infobarin tekstisisältö.
+     */
     private JLabel statustext = new JLabel();
     
     public UIContents(UI ui) {
@@ -125,6 +134,9 @@ public class UIContents {
         return this.statustext;
     }
     
+    /**
+     * Tyhjentää kaikki Frameen kuuluvat oleelliset komponentit, jotta niihin ei kertyisi vanhaa tavaraa.
+     */
     public void resetPanels() {
         p.removeAll();
         infobar.removeAll();

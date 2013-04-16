@@ -21,7 +21,13 @@ public abstract class ClickableObject implements Cloneable{
      * Objektin koordinaateista vastaava apuolio.
      */
     Location xy;
+    /**
+     * Objektin leveys.
+     */
     int width;
+    /**
+     * Objektin korkeus.
+     */
     int height;
 
     /**
@@ -96,6 +102,10 @@ public abstract class ClickableObject implements Cloneable{
         return this.height;
     }
 
+    /**
+     * Asettaa objektin kuvan.
+     * @param imagefile 
+     */
     public void setImage(File imagefile) {
         try {
             this.image = ImageIO.read(imagefile);

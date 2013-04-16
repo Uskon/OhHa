@@ -37,6 +37,15 @@ public class StaticObject extends ClickableObject {
         super.image = images.get(currentImage);
     }
     
+    public void previousImage() {
+        currentImage--;
+        if (currentImage == 0) {
+            currentImage = images.size()-1;
+        }
+        super.image = images.get(currentImage);
+    }
+    
+    
     public void addImage(Image img) {
         images.add(img);
     }

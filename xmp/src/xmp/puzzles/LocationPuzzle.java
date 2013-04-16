@@ -18,6 +18,9 @@ public class LocationPuzzle extends Puzzle{
      * ClickableObjektien halutut kohdesijainnit.
      */
     private HashMap<ClickableObject, Location> targetLocations = new HashMap<>();
+    /**
+     * ClickableObjectien alkuperäiset sijainnit.
+     */
     private HashMap<ClickableObject, Location> originalLocations = new HashMap<>();
     
     public LocationPuzzle(String name) {
@@ -33,6 +36,10 @@ public class LocationPuzzle extends Puzzle{
         setOriginalLocations(super.getObjectList());
     }
     
+    /**
+     * Luo listan, joka säilyttää tiedot Puzzleen kuuluvien ClickableObjectien alkuperäisistä Locationeista.
+     * @param oLoc 
+     */
     private void setOriginalLocations(ArrayList<ClickableObject> oLoc) {
         for (ClickableObject o : oLoc) {
             this.originalLocations.put(o, o.getLocation());
@@ -54,6 +61,9 @@ public class LocationPuzzle extends Puzzle{
         }
     }
     
+    /**
+     * Palauttaa puzzlen alkuperäiseen tilaansa.
+     */
     @Override
     public void reset() {
         for (ClickableObject o : getObjectList()) {

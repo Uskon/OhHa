@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import xmp.objects.ActivateableObject;
 import xmp.objects.ClickableObject;
+import xmp.objects.StaticLinkedObject;
 import xmp.objects.SwappableObject;
 import xmp.utilities.ObjectTriggerer;
 import xmp.utilities.SwappableObjectMemorizer;
@@ -81,6 +82,7 @@ public class GraphicsPanelListener implements MouseListener {
                     manageActivateables((ActivateableObject) object);
                 }
             }
+            gpanel.repaint();
         }   checkPuzzleClearStatus();
     }
 
@@ -90,7 +92,6 @@ public class GraphicsPanelListener implements MouseListener {
      */
     public void manageSwappables(SwappableObject object) {
         smemo.manageSwappables(object);
-        gpanel.repaint();
     }
 
     /**
@@ -99,8 +100,10 @@ public class GraphicsPanelListener implements MouseListener {
      */
     public void manageActivateables(ActivateableObject object) {
         otrig.triggerObject((ActivateableObject) object);
-        System.out.println(otrig.checkStatus((ActivateableObject) object));
-        gpanel.repaint();
+    }
+    
+    public void manageStatics(StaticLinkedObject slo) {
+        slo.activate();
     }
 
     /**

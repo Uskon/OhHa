@@ -10,7 +10,7 @@ import xmp.objects.SwappableObject;
 public class ObjectPlaceSwapper {
 
     /**
-     * Vaihtaa parametrina annettuiden SwappableObjectien koordinaatit keskenään.
+     * Vaihtaa parametrina annettuiden SwappableObjectien koordinaatit keskenään. Vanha metodi.
      * @param swo
      * @param swo2
      */
@@ -28,6 +28,12 @@ public class ObjectPlaceSwapper {
         swo2.setY(swoCoordinateY);
     }
     
+    /**
+     * Vaihtaa parametrina annettuiden SwappableObjectien koordinaatit keskenään. Uusi Locationeja käyttävä metodi.
+     * 
+     * @param swo
+     * @param swo2 
+     */
     public void swapPlaces(SwappableObject swo, SwappableObject swo2) {
         Location loc1 = swo.getLocation();
         Location loc2 = swo2.getLocation();

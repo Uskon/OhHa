@@ -54,6 +54,9 @@ public class SwappableObjectMemorizer {
         this.swappable2 = swappable2;
     }
     
+    /**
+     * Tyhjentää molemmat SwappableObject -privatemuuttujat.
+     */
     public void reset() {
         this.swappable1 = null;
         this.swappable2 = null;
