@@ -34,8 +34,7 @@ public class SwappableObjectMemorizer {
         else if (swappable1 != null && swappable1 != sw && swappable2 == null ) {
             swappable2 = sw;
             swapper.swapPlaces(swappable1, swappable2);
-            swappable1 = null;
-            swappable2 = null;
+            reset();
         }
     }
     
@@ -53,5 +52,10 @@ public class SwappableObjectMemorizer {
 
     public void setSwappable2(SwappableObject swappable2) {
         this.swappable2 = swappable2;
+    }
+    
+    public void reset() {
+        this.swappable1 = null;
+        this.swappable2 = null;
     }
 }

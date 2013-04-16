@@ -9,17 +9,17 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 import xmp.listeners.SelectionButtonListener;
 import xmp.puzzles.Puzzle;
+import xmp.utilities.SwappableObjectMemorizer;
 
 /**
  * Vastuussa käyttöliittymän sisällön muuttamisesta.
@@ -114,10 +114,11 @@ public class UIContents {
         selection.addActionListener(new SelectionButtonListener(this));
         statustext.setPreferredSize(new Dimension(200,200));
         infobar.add(statustext);
+        infobar.setBorder(new MatteBorder(1,1,1,1, Color.black));
         menubar.add(selection);
         p.add(menubar, BorderLayout.SOUTH);
         p.add(infobar, BorderLayout.EAST);
-        ui.getFrame().addMouseListener(new GraphicsPanelListener(ui.getGraphicsPanel()));
+        ui.getFrame().addMouseListener(new GraphicsPanelListener(ui.getGraphicsPanel(), new SwappableObjectMemorizer()));
     }
     
     public JLabel getStatustext() {

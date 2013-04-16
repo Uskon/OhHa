@@ -14,7 +14,7 @@ public class ObjectPlaceSwapper {
      * @param swo
      * @param swo2
      */
-    public void swapPlaces(SwappableObject swo, SwappableObject swo2) {
+    public void swapPlacesOld(SwappableObject swo, SwappableObject swo2) {
         int swoCoordinateX = swo.getX();
         int swoCoordinateY = swo.getY();
 
@@ -26,5 +26,13 @@ public class ObjectPlaceSwapper {
 
         swo2.setX(swoCoordinateX);
         swo2.setY(swoCoordinateY);
+    }
+    
+    public void swapPlaces(SwappableObject swo, SwappableObject swo2) {
+        Location loc1 = swo.getLocation();
+        Location loc2 = swo2.getLocation();
+        
+        swo.setLocation(loc2);
+        swo2.setLocation(loc1);
     }
 }

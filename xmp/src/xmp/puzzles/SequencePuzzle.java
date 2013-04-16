@@ -9,7 +9,7 @@ import xmp.activateableTriggers.TriggerSequence;
 import xmp.objects.ClickableObject;
 
 /**
- * Puzzleluokka, minkä ilmentymien suorittaminen perustuu ActivateableObjectien käyttämiseen oikeassa järjestyksessä.
+ * Puzzleluokka, minkä ilmentymien ratkaiseminen perustuu ActivateableObjectien käyttämiseen oikeassa järjestyksessä.
  * 
  */
 public class SequencePuzzle extends Puzzle{
@@ -41,12 +41,13 @@ public class SequencePuzzle extends Puzzle{
     @Override
     public void clearCheck() {
         if (tseq.checkIfSequenceIsCompleted() == true) {
-            super.isCleared = true;
+            super.cleared = true;
         }
     }
     
     @Override
     public void reset() {
-        this.tseq.deactivateAllTriggers();
+        super.setCleared(false);
+        tseq.deactivateAllTriggers();
     }
 }

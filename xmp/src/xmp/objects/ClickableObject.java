@@ -5,16 +5,22 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import javax.imageio.ImageIO;
+import xmp.utilities.Location;
 
 /**
  * Kaikkien puzzlemekaanisesti oleellisten graafisten elementtien abstrakti
  * yläluokka.
  */
-public abstract class ClickableObject {
+public abstract class ClickableObject implements Cloneable{
 
+    /**
+     * Objektin varsinainen grafiikka.
+     */
     Image image = null;
-    int coordinateX;
-    int coordinateY;
+    /**
+     * Objektin koordinaateista vastaava apuolio.
+     */
+    Location xy;
     int width;
     int height;
 
@@ -28,8 +34,7 @@ public abstract class ClickableObject {
      */
     public ClickableObject(int x, int y, int w, int h) {
         if (x >= 0 && y >= 0) {
-            this.coordinateX = x;
-            this.coordinateY = y;
+            xy = new Location(x,y);
         } else if (x < 0 || y < 0) {
             throw new IllegalArgumentException("All values must be non-negative");
         }
@@ -40,19 +45,27 @@ public abstract class ClickableObject {
             this.height = h;
         }
     }
+    
+    public Location getLocation() {
+        return this.xy;
+    }
+    
+    public void setLocation(Location loc) {
+        this.xy = loc;
+    }
 
     public void setX(int x) {
         if (x < 0) {
             throw new IllegalArgumentException("Value cannot be changed to negative");
         }
-        coordinateX = x;
+        xy.setCoordinateX(x);
     }
 
     public void setY(int y) {
         if (y < 0) {
             throw new IllegalArgumentException("Value cannot be changed to negative");
         }
-        coordinateY = y;
+        xy.setCoordinateY(y);
     }
 
     public void setW(int w) {
@@ -68,11 +81,11 @@ public abstract class ClickableObject {
     }
 
     public int getX() {
-        return this.coordinateX;
+        return this.xy.getCoordinateX();
     }
 
     public int getY() {
-        return this.coordinateY;
+        return this.xy.getCoordinateY();
     }
 
     public int getW() {
@@ -87,6 +100,7 @@ public abstract class ClickableObject {
         try {
             this.image = ImageIO.read(imagefile);
         } catch (Exception e) {
+            System.out.println("File not found!");
         }
     }
 
@@ -96,12 +110,17 @@ public abstract class ClickableObject {
      * @param graphics
      */
     public void drawTestGraphics(Graphics graphics) {
-        graphics.fillOval(coordinateX, coordinateY, width, height);
+        graphics.fillOval(xy.getCoordinateX(), xy.getCoordinateY(), width, height);
     }
     
+    /**
+     * Objektien varsinainen grafiikanpiirto.
+     * 
+     * @param graphics 
+     */
     public void drawImage(Graphics graphics) {
         if (image != null) {
-        graphics.drawImage(image, coordinateX, coordinateY, width, height, null);
+        graphics.drawImage(image, xy.getCoordinateX(), xy.getCoordinateY(), width, height, null);
         } else {
             drawTestGraphics(graphics);
         }

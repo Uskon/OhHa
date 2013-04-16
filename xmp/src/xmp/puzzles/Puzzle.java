@@ -4,7 +4,6 @@
  */
 package xmp.puzzles;
 
-import java.awt.List;
 import java.util.ArrayList;
 import xmp.objects.ClickableObject;
 
@@ -19,12 +18,13 @@ public abstract class Puzzle {
     /**
      * Onko puzzle suoritettu onnistuneesti.
      */
-    boolean isCleared = false;
+    boolean cleared = false;
     /**
      * Puzzlen sisältämät ClickableObjectit.
      * @see xmp.objects.ClickableObject
      */
     private ArrayList<ClickableObject> objectList;
+    private ArrayList<ClickableObject> originalState = new ArrayList<>();
     
     public Puzzle(String name) {
         this.name = name;
@@ -34,24 +34,29 @@ public abstract class Puzzle {
      * Palauttaa tiedon puzzlen suoritustilanteesta.
      * @return boolean
      */
-    public boolean isIsCleared() {
-        return isCleared;
+    public boolean isCleared() {
+        return cleared;
     }
 
     /**
      * Asettaa puzzlen suoritetuksi tai keskeneräiseksi.
      * @param isCleared 
      */
-    public void setIsCleared(boolean isCleared) {
-        this.isCleared = isCleared;
+    public void setCleared(boolean isCleared) {
+        this.cleared = isCleared;
     }
 
     public ArrayList<ClickableObject> getObjectList() {
         return objectList;
     }
-
+    
     public void setObjectList(ArrayList<ClickableObject> objectList) {
         this.objectList = objectList;
+        
+    }
+    
+    public ArrayList<ClickableObject> getOriginalState() {
+        return this.originalState;
     }
     
     /**

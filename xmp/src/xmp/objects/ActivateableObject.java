@@ -21,6 +21,9 @@ public class ActivateableObject extends ClickableObject {
      * @see xmp.activateableTriggers.Trigger
      */
     private Trigger trigger = null;
+    /**
+     * Kun trigger on aktivoitu, tämä image piirretään yläluokan imagen sijasta.
+     */
     private Image altImg = null;
 
     public ActivateableObject(int x, int y, int w, int h) {
@@ -53,12 +56,12 @@ public class ActivateableObject extends ClickableObject {
         try {
             this.altImg = ImageIO.read(imagefile);
         } catch (Exception e) {
+            System.out.println("File not found!");
         }
     }
 
     /**
-     * Piirtää testausgrafiikan objektille, myöhemmin lisätään oikean grafiikan
-     * piirtävä metodi.
+     * Piirtää testausgrafiikan objektille.
      *
      * @param graphics
      */
@@ -66,20 +69,25 @@ public class ActivateableObject extends ClickableObject {
     public void drawTestGraphics(Graphics graphics) {
         if (getTrigger().checkStatus() == true) {
             graphics.setColor(Color.green);
-            graphics.fillOval(coordinateX, coordinateY, width, height);
+            graphics.fillOval(xy.getCoordinateX(), xy.getCoordinateY(), width, height);
             graphics.setColor(Color.black);
         } else {
             graphics.setColor(Color.black);
-            graphics.fillOval(coordinateX, coordinateY, width, height);
+            graphics.fillOval(xy.getCoordinateX(), xy.getCoordinateY(), width, height);
         }
     }
     
+    /**
+     * ActivateableObjektin oma versio yläluokan metodista, mahdollistaa tilannekohtaisen grafiikan piirtämisen.
+     * @param graphics 
+     * @see xmp.objects.ClickableObject#drawImage(java.awt.Graphics)
+     */
     @Override
     public void drawImage(Graphics graphics) {
         if (getTrigger().checkStatus() == true) {
-            graphics.drawImage(altImg, this.coordinateX, this.coordinateY, this.width, this.height, null);
+            graphics.drawImage(altImg, xy.getCoordinateX(), xy.getCoordinateY(), this.width, this.height, null);
         } else {
-            graphics.drawImage(image, this.coordinateX, this.coordinateY, this.width, this.height, null);
+            graphics.drawImage(image, xy.getCoordinateX(), xy.getCoordinateY(), this.width, this.height, null);
         }
     }
 }

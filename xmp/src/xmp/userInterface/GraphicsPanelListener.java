@@ -29,15 +29,16 @@ public class GraphicsPanelListener implements MouseListener {
      * SwappableObjectien käsittelijä.
      * @see xmp.utilities.SwappableObjectMemorizer
      */
-    private SwappableObjectMemorizer smemo = new SwappableObjectMemorizer();
+    private SwappableObjectMemorizer smemo;
     /**
      * ActivateableObjectien käsittelijä.
      * @see xmp.utilities.ObjectTriggerer
      */
     private ObjectTriggerer otrig = new ObjectTriggerer();
 
-    public GraphicsPanelListener(GraphicsPanel gp) {
+    public GraphicsPanelListener(GraphicsPanel gp, SwappableObjectMemorizer smemo) {
         this.gpanel = gp;
+        this.smemo = smemo;
     }
 
     /**
@@ -54,8 +55,8 @@ public class GraphicsPanelListener implements MouseListener {
 
     /**
      * Määrittää hiiren suhteellisen y-koordinaatin framen sisällä, parempi
-     * metodi tulossa,
-     * tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
+     * metodi tulossa.
+     * Tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
      * eri kokoisilla ikkunoilla!
      *
      * @param e
@@ -80,8 +81,7 @@ public class GraphicsPanelListener implements MouseListener {
                     manageActivateables((ActivateableObject) object);
                 }
             }
-        }
-        checkPuzzleClearStatus();
+        }   checkPuzzleClearStatus();
     }
 
     /**
@@ -108,7 +108,7 @@ public class GraphicsPanelListener implements MouseListener {
      */
     public void checkPuzzleClearStatus() {
         gpanel.getPuzzle().clearCheck();
-        if (gpanel.getPuzzle().isIsCleared()) {
+        if (gpanel.getPuzzle().isCleared()) {
             this.gpanel.getUIC().getStatustext().setText("Puzzle cleared (Test version)");
             this.gpanel.getUIC().refresh();
         }
