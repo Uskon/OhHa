@@ -8,6 +8,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import xmp.objects.ActivateableObject;
 import xmp.objects.ClickableObject;
+import xmp.objects.MoveableObject;
 import xmp.objects.StaticLinkedObject;
 import xmp.objects.SwappableObject;
 import xmp.utilities.ObjectTriggerer;
@@ -16,6 +17,7 @@ import xmp.utilities.SwappableObjectMemorizer;
 /**
  * GraphicsPanelin kuuntelija, joka on vastuussa ClickableObjectien
  * käsittelystä, lisää toiminnallisuutta tulossa.
+ *
  * @see xmp.objects.ClickableObject
  */
 public class GraphicsPanelListener implements MouseListener {
@@ -28,11 +30,13 @@ public class GraphicsPanelListener implements MouseListener {
     private GraphicsPanel gpanel;
     /**
      * SwappableObjectien käsittelijä.
+     *
      * @see xmp.utilities.SwappableObjectMemorizer
      */
     private SwappableObjectMemorizer smemo;
     /**
      * ActivateableObjectien käsittelijä.
+     *
      * @see xmp.utilities.ObjectTriggerer
      */
     private ObjectTriggerer otrig = new ObjectTriggerer();
@@ -56,8 +60,7 @@ public class GraphicsPanelListener implements MouseListener {
 
     /**
      * Määrittää hiiren suhteellisen y-koordinaatin framen sisällä, parempi
-     * metodi tulossa.
-     * Tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
+     * metodi tulossa. Tämä voi aiheuttaa ongelmia eri käyttöjärjestelmillä ja
      * eri kokoisilla ikkunoilla!
      *
      * @param e
@@ -68,8 +71,10 @@ public class GraphicsPanelListener implements MouseListener {
     }
 
     /**
-     * Tarkistaa onko klikatussa kohdassa jokin ClickableObject, ja jos on niin suorittaa sopivan metodin.
-     * @param e 
+     * Tarkistaa onko klikatussa kohdassa jokin ClickableObject, ja jos on niin
+     * suorittaa sopivan metodin.
+     *
+     * @param e
      */
     @Override
     public void mouseClicked(MouseEvent e) {
@@ -77,37 +82,48 @@ public class GraphicsPanelListener implements MouseListener {
             if ((mouseX(e) >= object.getX() && mouseX(e) <= object.getX() + object.getW()) && (mouseY(e) >= object.getY() && mouseY(e) <= object.getY() + object.getH())) {
                 if (object.getClass().getName().equals("xmp.objects.SwappableObject")) {
                     manageSwappables((SwappableObject) object);
+                    return;
                 }
                 if (object.getClass().getName().equals("xmp.objects.ActivateableObject")) {
                     manageActivateables((ActivateableObject) object);
                 }
             }
             gpanel.repaint();
-        }   checkPuzzleClearStatus();
+        }
+        checkPuzzleClearStatus();
     }
 
     /**
-     * Suorittaa SwappableObjectien paikkojen vaihtamisen SwappableObjectMemorizerin kautta.
-     * @param object 
+     * Suorittaa SwappableObjectien paikkojen vaihtamisen
+     * SwappableObjectMemorizerin kautta.
+     *
+     * @param object
      */
     public void manageSwappables(SwappableObject object) {
         smemo.manageSwappables(object);
+        gpanel.repaint();
+        checkPuzzleClearStatus();
     }
 
     /**
      * Suorittaa ActivateableObjectien aktivoinnin ObjectTriggererin avulla.
-     * @param object 
+     *
+     * @param object
      */
     public void manageActivateables(ActivateableObject object) {
         otrig.triggerObject((ActivateableObject) object);
     }
     
+    public void manageMoveables(MoveableObject object, int x, int y) {
+    }
+
     public void manageStatics(StaticLinkedObject slo) {
         slo.activate();
     }
 
     /**
-     * Tarkistaa puzzlen suoritustilanteen, ja ilmoittaa onnistumisesta jos tarpeen.
+     * Tarkistaa puzzlen suoritustilanteen, ja ilmoittaa onnistumisesta jos
+     * tarpeen.
      */
     public void checkPuzzleClearStatus() {
         gpanel.getPuzzle().clearCheck();

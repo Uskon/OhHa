@@ -28,3 +28,6 @@
  
 16.4
  #klo 13-18:30; Uusia puzzletyyppeja sekä niiden vaatimat uudet sekä muuttuneet muut luokat. Kuvien piirtäminen objekteille. Uusi sekvenssikaavio.
+
+23.4
+ #klo 10-13; Toimintojen parantamista/korjaamista, bugien metsästystä. 

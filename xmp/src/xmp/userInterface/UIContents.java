@@ -55,11 +55,17 @@ public class UIContents {
      */
     private JLabel statustext = new JLabel();
     
+    private GraphicsPanelListener gpl;
+    
+    private SwappableObjectMemorizer smemo;
+    
     public UIContents(UI ui) {
         this.ui = ui;
         this.puzzleList = ui.getPuzzles();
         this.c = ui.getFrame().getContentPane();
         c.add(p);
+        smemo = new SwappableObjectMemorizer();
+        gpl = new GraphicsPanelListener(ui.getGraphicsPanel(),smemo);
     }
    
     /**
@@ -70,7 +76,7 @@ public class UIContents {
         p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
         p.setBackground(Color.black);
         JButton selection = new JButton("Select puzzle");
-        JButton options = new JButton("Options? To-be-implemented");
+        //JButton options = new JButton("Options? To-be-implemented");
         JPanel title = new JPanel();
         JLabel titletext = new JLabel("xmP tentative title");
         titletext.setForeground(Color.red);
@@ -80,12 +86,12 @@ public class UIContents {
         selection.addActionListener(new SelectionButtonListener(this));
         title.setMaximumSize(new Dimension(1600, 100));
         selection.setMaximumSize(new Dimension(250, 70));
-        options.setMaximumSize(new Dimension(250, 70));
+        //options.setMaximumSize(new Dimension(250, 70));
         p.add(title);
         p.add(Box.createRigidArea(new Dimension (0, 50)));
         p.add(selection);
         p.add(Box.createRigidArea(new Dimension (0, 100)));
-        p.add(options);
+        //p.add(options);
     }
     
     /**
@@ -93,12 +99,18 @@ public class UIContents {
      */
     public void puzzleSelection() {
         resetPanels();
-        p.setLayout(new FlowLayout());
+        p.setLayout(new BorderLayout());
+        JPanel filler = new JPanel();
+        filler.setBackground(Color.black);
+        filler.setPreferredSize(new Dimension(800,80));
+        JPanel puzzles = new JPanel();
+        puzzles.setBackground(Color.BLACK);
+        p.add(filler, BorderLayout.NORTH);
         if (this.puzzleList != null) {
         for (Puzzle z : this.puzzleList) {
-            p.add(new PuzzleButton(z.toString(),z,this,ui.getGraphicsPanel()));
+            puzzles.add(new PuzzleButton(z.toString(),z,this,ui.getGraphicsPanel()));
         }
-        }
+        }   p.add(puzzles);
     }
     
     /**
@@ -116,6 +128,8 @@ public class UIContents {
         for (Puzzle x : puzzleList) {
             x.reset();
         }
+        smemo.reset();
+        ui.getFrame().removeMouseListener(gpl);
         resetPanels();
         p.setLayout(new BorderLayout());
         p.add(ui.getGraphicsPanel());
@@ -127,7 +141,7 @@ public class UIContents {
         menubar.add(selection);
         p.add(menubar, BorderLayout.SOUTH);
         p.add(infobar, BorderLayout.EAST);
-        ui.getFrame().addMouseListener(new GraphicsPanelListener(ui.getGraphicsPanel(), new SwappableObjectMemorizer()));
+        ui.getFrame().addMouseListener(gpl);
     }
     
     public JLabel getStatustext() {

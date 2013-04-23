@@ -60,7 +60,7 @@ public class LocationPuzzle extends Puzzle{
     public void clearCheck() {
         boolean doLocationsMatch = true;
         for (ClickableObject o : getObjectList()) {
-            if (!(targetLocations.get(o).getCoordinateX() == o.getX())) {
+            if (!((targetLocations.get(o).getCoordinateX() == o.getX()) && (targetLocations.get(o).getCoordinateY() == o.getY()))) {
                 doLocationsMatch = false;
             }
         }   if (doLocationsMatch) {

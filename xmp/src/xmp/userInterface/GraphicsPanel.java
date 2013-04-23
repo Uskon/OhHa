@@ -23,6 +23,7 @@ public class GraphicsPanel extends JPanel{
      */
     private Puzzle p;
     private UIContents uic;
+    private Image bg = null;
     
     public GraphicsPanel() {
         super.setBackground(Color.WHITE);
@@ -39,6 +40,11 @@ public class GraphicsPanel extends JPanel{
     
     public void setPuzzle(Puzzle p) {
         this.p = p;
+        if (p.getBackground() != null) {
+            bg = p.getBackground();
+        }   else {
+            bg = null;
+        }
     }
     
     public Puzzle getPuzzle() {
@@ -54,6 +60,9 @@ public class GraphicsPanel extends JPanel{
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
+        if (bg != null) {
+            graphics.drawImage(bg, 0, 0, this.getWidth(), this.getHeight(), this);
+        }
         for (ClickableObject object : p.getObjectList()) {
             object.drawImage(graphics);
         }

@@ -4,6 +4,7 @@
  */
 package xmp;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import javax.swing.SwingUtilities;
@@ -38,6 +39,10 @@ public class Xmp {
         ArrayList<Puzzle> pl = new ArrayList<>();
         SequencePuzzle p = new SequencePuzzle("SequenceTestPuzzle");
         LocationPuzzle lp = new LocationPuzzle("LocationTestPuzzle");
+        File bg = new File("images/background_wood.png");
+        lp.setBackground(bg);
+        ArrayList<ClickableObject> list = new ArrayList<>();
+        list.add(o1);
         p.setTseq(so.getTSeq());
         p.setObjectList(so.getList());
         lp.setObjectList(so2.getList());

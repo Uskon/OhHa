@@ -4,7 +4,10 @@
  */
 package xmp.puzzles;
 
+import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import xmp.objects.ClickableObject;
 
 /**
@@ -24,6 +27,11 @@ public abstract class Puzzle {
      * @see xmp.objects.ClickableObject
      */
     private ArrayList<ClickableObject> objectList;
+    /** 
+     * Puzzlen tausta
+     * 
+     */
+    private Image background = null;
     
     public Puzzle(String name) {
         this.name = name;
@@ -52,6 +60,18 @@ public abstract class Puzzle {
     public void setObjectList(ArrayList<ClickableObject> objectList) {
         this.objectList = objectList;
         
+    }
+    
+    public void setBackground(File imagefile) {
+        try {
+            this.background = ImageIO.read(imagefile);
+        } catch (Exception e) {
+            System.out.println("File not found!");
+        }
+    }
+    
+    public Image getBackground() {
+        return this.background;
     }
     
     /**
