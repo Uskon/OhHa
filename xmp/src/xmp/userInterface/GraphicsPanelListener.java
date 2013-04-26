@@ -16,7 +16,7 @@ import xmp.utilities.SwappableObjectMemorizer;
 
 /**
  * GraphicsPanelin kuuntelija, joka on vastuussa ClickableObjectien
- * käsittelystä, lisää toiminnallisuutta tulossa.
+ * käsittelystä. Täällä on mahdollista määritellä, mitä tiettyä objectia klikattaessa tapahtuu.
  *
  * @see xmp.objects.ClickableObject
  */
@@ -72,7 +72,8 @@ public class GraphicsPanelListener implements MouseListener {
 
     /**
      * Tarkistaa onko klikatussa kohdassa jokin ClickableObject, ja jos on niin
-     * suorittaa sopivan metodin.
+     * suorittaa sopivan metodin. Toiminta suoritettu niin, että jos jokin ClickableObject löydetään kohdasta, niin toiminto suoritetaan
+     * vain ensimmäiselle niistä, toisinsanoen päällekkäin sattuneet ClickableObjectit eivät kaikki aktivoidu kerrallaan.
      *
      * @param e
      */
@@ -86,11 +87,14 @@ public class GraphicsPanelListener implements MouseListener {
                 }
                 if (object.getClass().getName().equals("xmp.objects.ActivateableObject")) {
                     manageActivateables((ActivateableObject) object);
+                    return;
+                }
+                if (object.getClass().getName().equals("xmp.objects.StaticLinkedObject")) {
+                    manageStatics((StaticLinkedObject) object);
+                    return;
                 }
             }
-            gpanel.repaint();
         }
-        checkPuzzleClearStatus();
     }
 
     /**
@@ -112,13 +116,27 @@ public class GraphicsPanelListener implements MouseListener {
      */
     public void manageActivateables(ActivateableObject object) {
         otrig.triggerObject((ActivateableObject) object);
+        gpanel.repaint();
+        checkPuzzleClearStatus();
     }
     
+    /**
+     * Moveableille ei tällä hetkellä ole toiminnallisuutta, sillä se olisi riippuvaista halutusta käyttötarkoituksesta.
+     * @param object
+     * @param x
+     * @param y 
+     */
     public void manageMoveables(MoveableObject object, int x, int y) {
     }
 
+    /**
+     * Aktivoi klikatun StaticLinkedObjectin.
+     * @param slo 
+     */
     public void manageStatics(StaticLinkedObject slo) {
         slo.activate();
+        gpanel.repaint();
+        checkPuzzleClearStatus();
     }
 
     /**

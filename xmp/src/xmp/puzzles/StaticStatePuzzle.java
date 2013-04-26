@@ -11,6 +11,7 @@ import xmp.objects.StaticObject;
 /**
  * Puzzletyyppi, missä on tarkoituksena StaticLinkedObjectien avulla saada
  * puzzlen StaticObjectit oikeaan tilaan.
+ * Toisinsanoen, StaticStatePuzzle on suoritettu kun kaikilla StaticObjecteilla on oikea kuva näkyvissä.
  *
  * @see xmp.puzzles.Puzzle
  * @see xmp.objects.StaticLinkedObject
@@ -27,8 +28,8 @@ public class StaticStatePuzzle extends Puzzle {
     @Override
     public void clearCheck() {
         boolean doStatesMatch = true;
-        StaticObject so = null;
         for (ClickableObject o : super.getObjectList()) {
+            StaticObject so = null;
             try {
                 so = (StaticObject) o;
             } catch (Exception e) {
@@ -44,9 +45,23 @@ public class StaticStatePuzzle extends Puzzle {
         }
         }
     
+    public void setCorrectStates(HashMap<ClickableObject, Integer> states) {
+        this.correctStates = states;
+    }
+
+    public HashMap<ClickableObject, Integer> getCorrectStates() {
+        return correctStates;
+    }
+    
     @Override
     public void reset() {
         super.setCleared(false);
+        for (ClickableObject o : getObjectList()) {
+            if (o.getClass().getName().equals("xmp.objects.StaticObject")) {
+                StaticObject so = (StaticObject) o;
+                so.setState(0);
+            }
+        }
     }
     
     }

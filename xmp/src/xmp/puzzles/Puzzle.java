@@ -32,6 +32,10 @@ public abstract class Puzzle {
      * 
      */
     private Image background = null;
+    /**
+     * Mahdollinen vihje, sillä tällä hetkellä puzzlet ovat poissa kontekstista.
+     */
+    private String hint = "";
     
     public Puzzle(String name) {
         this.name = name;
@@ -74,6 +78,14 @@ public abstract class Puzzle {
         return this.background;
     }
     
+    public String getHint() {
+        return this.hint;
+    }
+    
+    public void setHint(String hint) {
+        this.hint = hint;
+    }
+    
     /**
      * Alaluokilla on omat metodinsa suoritustilanteen selvittämistä varten.
      */
@@ -85,6 +97,9 @@ public abstract class Puzzle {
         return this.name;
     }
     
+    /**
+     * Puzzleilla käytettävissä oleva metodi, joka palauttaa Puzzlen käytännössä alkuperäiseen tilaansa.
+     */
     public void reset() {
     }
 }

@@ -1,0 +1,8 @@
+﻿Kayttöohjeet:
+
+Ohjelman .jar tiedoston ja images-kansion tulee sijaita samassa hakemistossa.
+
+Ohjelman käynnistyttyä Select Puzzle -näppäin vie valintanäkymään, jossa haluamaansa näppäintä painamalla pääsee Puzzlenratkaisunäkymään.
+
+Puzzlea ratkaistaessa toiminta tapahtuu näytöllä olevia objekteja klikkaamalla, vaikutuksen saa selville testailemalla.
+Halutessaan voi oikean alalaidan Show Hint -näppäimestä näyttää ratkaisemiseen mahdollisen neuvon. Back to Selection vie takaisin valintanäkymään.

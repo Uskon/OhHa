@@ -5,7 +5,9 @@
 package xmp.objects;
 
 import java.awt.Image;
+import java.io.File;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 
 /**
  * ClickableObjectin alaluokka, jonka tehtävänä on mahdollistaa tietyissä tilanteissa vaihtuvien kuvien toteutus.
@@ -31,25 +33,45 @@ public class StaticObject extends ClickableObject {
      */
     public void nextImage() {
         currentImage++;
-        if (currentImage == images.size()) {
+        if (currentImage >= images.size()) {
             currentImage = 0;
         }
         super.image = images.get(currentImage);
     }
     
+    /**
+     * Vaihtaa aiemman imagen piirrettäväksi.
+     */
     public void previousImage() {
         currentImage--;
-        if (currentImage == 0) {
+        if (currentImage < 0) {
             currentImage = images.size()-1;
         }
         super.image = images.get(currentImage);
     }
     
+    /**
+     * Lisää StaticObjectille uuden imagen aiempien jatkoksi.
+     * @param img 
+     */
     public void addImage(Image img) {
         if (super.image == null) {
             super.image = img;
         }
         images.add(img);
+    }
+    
+    /**
+     * Uuden imagen voi lisätä myös suoraan Filenä.
+     * @param file 
+     */
+    public void addImageAsFile(File file) {
+        try {
+            Image img = ImageIO.read(file);
+            addImage(img);
+        } catch (Exception e) {
+            System.out.println("File not found!");
+        }
     }
 
     public ArrayList<Image> getImages() {
@@ -60,7 +82,15 @@ public class StaticObject extends ClickableObject {
         this.images = images;
     }
     
+    /**
+     * Palauttaa Integer-arvona StaticObjectin tämänhetkisen kohdan imagelistalla.
+     * @return 
+     */
     public int getState() {
         return this.currentImage;
+    }
+    
+    public void setState(int state) {
+        this.currentImage = state;
     }
 }

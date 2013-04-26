@@ -51,7 +51,7 @@ public class StaticLinkedObjectTest {
     @Test
     public void staticLinkedObjectCanSetStaticObjectPreviousImage() {
         slo.activate();
-        slo.setDirection(false);
+        slo.setDirectionForward(false);
         slo.activate();
         assertTrue(s1.getImage() == img1);
     }

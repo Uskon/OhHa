@@ -52,6 +52,10 @@ public class ActivateableObject extends ClickableObject {
         return this.trigger;
     }
 
+    /**
+     * Asettaa ActivateableObjectin vaihtoehtoisen imagen, jota käytetään Triggerin ollessa aktivoituna.
+     * @param imagefile 
+     */
     public void setAltImage(File imagefile) {
         try {
             this.altImg = ImageIO.read(imagefile);

@@ -1,0 +1,11 @@
+﻿Rakennekuvaus:
+
+GraphicsPanel hoitaa varsinaisen toiminnallisen osuuden, siihen liittyy aina Puzzle ja GraphicsPanelListener.
+GraphicsPanel tietää Puzzlen kautta kaikki piirtämistä tarvitsevat ClickableObjectit, ja GraphicsPanelListener samoin kykenee sitä kautta tarkistamaan, onko klikatuissa koordinaateissa jotakin ClickableObjectia.
+GraphicsPanelListenerin kautta GraphicsPanelin sisältö päivitetään tarpeen tullen, ja samoin Puzzlen suoritustilanne tarkistetaan aina ClickableObjectien käsittelyn jälkeen.
+
+UIContents on vastuussa varsinaisen UI:n kokoonpanosta. Periaatteessa se hoitaa UI:n kattavan JPanelin komponenttien luomisen ja päivittämisen. Täällä luodaan erilaisen buttonit ja niiden kuuntelijat.
+
+ClickableObjectit on jaettu erillisiin alaluokkiin sen mukaan, mitä kullekin kuuluu tehdä, kun niitä GraphicsPanelissa klikataan.
+
+Erilaiset utilityt ovat pääosin GraphicsPanelListenerin aputyökaluja tietyntyyppisten ClickableObjectien hallinnoimiseksi.

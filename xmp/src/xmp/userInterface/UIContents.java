@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -17,6 +16,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
+import sas.swing.plaf.MultiLineLabelUI;
+import xmp.listeners.HintButtonListener;
 import xmp.listeners.SelectionButtonListener;
 import xmp.puzzles.Puzzle;
 import xmp.utilities.SwappableObjectMemorizer;
@@ -26,6 +27,7 @@ import xmp.utilities.SwappableObjectMemorizer;
  *
  */
 public class UIContents {
+
     /**
      * Käyttöliittymän mihin vaikutetaan.
      */
@@ -33,11 +35,11 @@ public class UIContents {
     /**
      * Käyttöliittymän JFramen Containeri.
      */
-    private Container c;
+    private Container container;
     /**
      * Käyttöliittymän varsinaisen sisällön pohja.
      */
-    private JPanel p = new JPanel();
+    private JPanel mainPanel = new JPanel();
     /**
      * UI:lta saadut puzzlet.
      */
@@ -54,71 +56,75 @@ public class UIContents {
      * Puzzlenäkymässä infobarin tekstisisältö.
      */
     private JLabel statustext = new JLabel();
-    
     private GraphicsPanelListener gpl;
-    
     private SwappableObjectMemorizer smemo;
-    
+
     public UIContents(UI ui) {
         this.ui = ui;
         this.puzzleList = ui.getPuzzles();
-        this.c = ui.getFrame().getContentPane();
-        c.add(p);
+        this.container = ui.getFrame().getContentPane();
+        container.add(mainPanel);
         smemo = new SwappableObjectMemorizer();
-        gpl = new GraphicsPanelListener(ui.getGraphicsPanel(),smemo);
+        gpl = new GraphicsPanelListener(ui.getGraphicsPanel(), smemo);
     }
-   
+
     /**
      * Luo käynnistysvalikon.
      */
     public void startMenu() {
         resetPanels();
-        p.setLayout(new BoxLayout(p, BoxLayout.PAGE_AXIS));
-        p.setBackground(Color.black);
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
+        mainPanel.setBackground(Color.black);
+
         JButton selection = new JButton("Select puzzle");
-        //JButton options = new JButton("Options? To-be-implemented");
         JPanel title = new JPanel();
-        JLabel titletext = new JLabel("xmP tentative title");
+        JLabel titletext = new JLabel("xmP Puzzle platform");
+
         titletext.setForeground(Color.red);
         title.setBackground(Color.black);
         title.setBorder(new LineBorder(Color.white));
         title.add(titletext);
-        selection.addActionListener(new SelectionButtonListener(this));
         title.setMaximumSize(new Dimension(1600, 100));
+
         selection.setMaximumSize(new Dimension(250, 70));
-        //options.setMaximumSize(new Dimension(250, 70));
-        p.add(title);
-        p.add(Box.createRigidArea(new Dimension (0, 50)));
-        p.add(selection);
-        p.add(Box.createRigidArea(new Dimension (0, 100)));
-        //p.add(options);
+        selection.addActionListener(new SelectionButtonListener(this));
+
+        mainPanel.add(title);
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 50)));
+        mainPanel.add(selection);
+        mainPanel.add(Box.createRigidArea(new Dimension(0, 100)));
     }
-    
+
     /**
      * Luo puzzlenvalintanäkymän.
      */
     public void puzzleSelection() {
         resetPanels();
-        p.setLayout(new BorderLayout());
+        mainPanel.setLayout(new BorderLayout());
         JPanel filler = new JPanel();
-        filler.setBackground(Color.black);
-        filler.setPreferredSize(new Dimension(800,80));
         JPanel puzzles = new JPanel();
+
+        filler.setBackground(Color.black);
+        filler.setPreferredSize(new Dimension(800, 80));
+
         puzzles.setBackground(Color.BLACK);
-        p.add(filler, BorderLayout.NORTH);
+
+        mainPanel.add(filler, BorderLayout.NORTH);
+
         if (this.puzzleList != null) {
-        for (Puzzle z : this.puzzleList) {
-            puzzles.add(new PuzzleButton(z.toString(),z,this,ui.getGraphicsPanel()));
+            for (Puzzle z : this.puzzleList) {
+                puzzles.add(new PuzzleButton(z.toString(), z, this, ui.getGraphicsPanel()));
+            }
         }
-        }   p.add(puzzles);
+        mainPanel.add(puzzles);
     }
-    
+
     /**
      * Päivittää käyttöliittymän ulkonäön.
      */
     public void refresh() {
-        p.repaint();
-        p.revalidate();
+        mainPanel.repaint();
+        mainPanel.revalidate();
     }
 
     /**
@@ -131,28 +137,42 @@ public class UIContents {
         smemo.reset();
         ui.getFrame().removeMouseListener(gpl);
         resetPanels();
-        p.setLayout(new BorderLayout());
-        p.add(ui.getGraphicsPanel());
+        
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.add(ui.getGraphicsPanel());
+        
+        JButton showHint = new JButton("Show Hint");
+        HintButtonListener hbl = new HintButtonListener(statustext, ui.getGraphicsPanel().getPuzzle(), this);
         JButton selection = new JButton("Back to selection");
+        
         selection.addActionListener(new SelectionButtonListener(this));
-        statustext.setPreferredSize(new Dimension(200,200));
+        statustext.setPreferredSize(new Dimension(150, 200));
+        
+        //Käyttää MultiLineLabel-luokkia projektiin liitetystä sas-paketista.
+        statustext.setUI(MultiLineLabelUI.labelUI);
+        infobar.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
+        
+        showHint.addActionListener(hbl);
+        infobar.setLayout(new BorderLayout());
         infobar.add(statustext);
-        infobar.setBorder(new MatteBorder(1,1,1,1, Color.black));
+        infobar.add(showHint, BorderLayout.SOUTH);
         menubar.add(selection);
-        p.add(menubar, BorderLayout.SOUTH);
-        p.add(infobar, BorderLayout.EAST);
+        mainPanel.add(menubar, BorderLayout.SOUTH);
+        mainPanel.add(infobar, BorderLayout.EAST);
+        
         ui.getFrame().addMouseListener(gpl);
     }
-    
+
     public JLabel getStatustext() {
         return this.statustext;
     }
-    
+
     /**
-     * Tyhjentää kaikki Frameen kuuluvat oleelliset komponentit, jotta niihin ei kertyisi vanhaa tavaraa.
+     * Tyhjentää kaikki Frameen kuuluvat oleelliset komponentit, jotta niihin ei
+     * kertyisi vanhaa tavaraa.
      */
     public void resetPanels() {
-        p.removeAll();
+        mainPanel.removeAll();
         infobar.removeAll();
         menubar.removeAll();
         statustext.setText("");

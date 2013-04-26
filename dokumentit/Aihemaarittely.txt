@@ -5,7 +5,7 @@ Käyttäjät: pelaaja, point and click adventure
 
 Kaikkien käytettävissä olevat toiminnot:
 	-puzzlen valitseminen ja käynnistäminen
-	-tulosten tallentaminen ja tarkastelu
+	-puzzlen suoritustilanteen tarkistaminen
 
 Pelaajan toiminnot:
 	-graafisten objektien käyttäminen, puzzlesta riippuen siirtämistä, vaihtamista, aktivoimista jne.

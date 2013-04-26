@@ -21,7 +21,7 @@ public class StaticLinkedObject extends ClickableObject{
       * Asettaa, kumpaan suuntaan liitettyä StaticObjectin imagelistaa käytetään.
       * @param b true = nextImage(), false = previousImage()
       */
-    public void setDirection(boolean b) {
+    public void setDirectionForward(boolean b) {
         this.forward = b;
     }
     

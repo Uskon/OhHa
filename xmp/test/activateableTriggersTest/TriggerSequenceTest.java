@@ -62,7 +62,7 @@ public class TriggerSequenceTest {
             emptySeq.newSequence(testList);
         } catch (Exception e) {
         }
-        assertTrue(emptySeq.getList() == null);
+        assertTrue(emptySeq.getTriggerList() == null);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class TriggerSequenceTest {
             emptySeq.newSequence(triggerList);
         } catch (Exception e) {
         }
-        assertTrue(emptySeq.getList().equals(triggerList));
+        assertTrue(emptySeq.getTriggerList().equals(triggerList));
     }
 
     @Test

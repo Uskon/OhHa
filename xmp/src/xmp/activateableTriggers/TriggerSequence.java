@@ -76,7 +76,7 @@ public class TriggerSequence {
         }
     }
 
-    public HashMap<Integer, Trigger> getList() {
+    public HashMap<Integer, Trigger> getTriggerList() {
         return this.triggerList;
     }
 }

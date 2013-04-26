@@ -1,0 +1,6 @@
+﻿Testausdokumentaatio
+
+Testauksessa lähinnä käyttöliittymän erilaiset luokat on jätetty yksikkötestejä vaille, sillä niiden testaaminen olisi ollut hankalaa eikä välttämättä edes oikeasti hyödyllistä.
+Sen sijaan käyttöliittymän toiminta on testattu (joskin lyhytaikaisesti) kokeilemalla ohjelmaa ja lisäämällä käyttöliittymään erilaisia komponentteja, eikä ongelmia ole ilmennyt.
+
+Mahdollisia ongelmia ohjelmassa voisi kenties aiheutua, jos Puzzleja on lisätty liian monta, tai Puzzlessa ClickableObjecteja on asetettu päällekkäisiin koordinaatteihin. Tälläiset ongelmat eivät kuitenkaan tulisi vastaan ohjelman oikeassa käyttötarkoituksessa, Point and Click adventuren laajennuksena.

@@ -6,18 +6,15 @@ package xmp;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import javax.swing.SwingUtilities;
-import xmp.objects.ClickableObject;
-import xmp.objects.MoveableObject;
-import xmp.sampleObjectsForTesting.SequencePuzzleSampleObjects;
-import xmp.sampleObjectsForTesting.LocationPuzzleSampleObjects;
-import xmp.objects.SwappableObject;
 import xmp.puzzles.LocationPuzzle;
 import xmp.puzzles.Puzzle;
 import xmp.puzzles.SequencePuzzle;
+import xmp.puzzles.StaticStatePuzzle;
+import xmp.sampleObjectsForTesting.LocationPuzzleSampleObjects;
+import xmp.sampleObjectsForTesting.SequencePuzzleSampleObjects;
+import xmp.sampleObjectsForTesting.StaticStatePuzzleSampleObjects;
 import xmp.userInterface.UI;
-import xmp.utilities.Location;
 
 
 /**
@@ -31,24 +28,27 @@ public class Xmp {
      */
     public static void main(String[] args) {
         //TEST CODE--
-        MoveableObject o1 = new MoveableObject(50,50, 20, 20);
-        SwappableObject s1 = new SwappableObject(10, 20, 10, 40);
-        SwappableObject s2 = new SwappableObject(40, 160, 60, 20);
         SequencePuzzleSampleObjects so = new SequencePuzzleSampleObjects();
         LocationPuzzleSampleObjects so2 = new LocationPuzzleSampleObjects();
+        StaticStatePuzzleSampleObjects so3 = new StaticStatePuzzleSampleObjects();
         ArrayList<Puzzle> pl = new ArrayList<>();
         SequencePuzzle p = new SequencePuzzle("SequenceTestPuzzle");
         LocationPuzzle lp = new LocationPuzzle("LocationTestPuzzle");
+        StaticStatePuzzle ssp = new StaticStatePuzzle("StaticStateTestPuzzle");
+        p.setHint("1,5,7,3 Myötäpäivään rotaatio");
+        lp.setHint("Värit ylös");
+        ssp.setHint("x y z \n x - y = z \n x,y % 2 = 1 \n y > 2z");
         File bg = new File("images/background_wood.png");
         lp.setBackground(bg);
-        ArrayList<ClickableObject> list = new ArrayList<>();
-        list.add(o1);
         p.setTseq(so.getTSeq());
         p.setObjectList(so.getList());
         lp.setObjectList(so2.getList());
         lp.setTargetLocations(so2.getHM());
+        ssp.setCorrectStates(so3.getCorrectStates());
+        ssp.setObjectList(so3.getObjects());
         pl.add(p);
         pl.add(lp);
+        pl.add(ssp);
         UI ui = new UI(pl);
         SwingUtilities.invokeLater(ui);
         //--TEST CODE

@@ -6,7 +6,7 @@ package xmp.puzzles;
 
 import java.util.ArrayList;
 import xmp.activateableTriggers.TriggerSequence;
-import xmp.objects.ClickableObject;
+import xmp.objects.ActivateableObject;
 
 /**
  * Puzzleluokka, minkä ilmentymien ratkaiseminen perustuu ActivateableObjectien käyttämiseen oikeassa järjestyksessä.
@@ -22,7 +22,7 @@ public class SequencePuzzle extends Puzzle{
     /**
      * Lista puzzleen kuuluvista ClickableObjecteista.
      */
-    private ArrayList<ClickableObject> objectList;
+    private ArrayList<ActivateableObject> objectList;
 
     public SequencePuzzle(String name) {
         super(name);
